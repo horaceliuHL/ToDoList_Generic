@@ -86,10 +86,14 @@ export default class ToDoModel {
      */
     addNewList(initName) {
         let newList = new ToDoList(this.nextListId++);
-        if (initName)
+        if (initName){
             newList.setName(initName);
-        this.toDoLists.push(newList);
-        this.view.appendNewListToView(newList);
+            this.toDoLists.push(newList);
+        } else {
+            this.toDoLists.unshift(newList);
+        }
+        // this.view.appendNewListToView(newList);
+        this.view.refreshLists(this.toDoLists);
         return newList;
     }
 
@@ -113,6 +117,7 @@ export default class ToDoModel {
         newItem.setAssignedTo(assigned_to);
         newItem.setCompleted(completed);
         this.addItemToList(list, newItem);
+
     }
 
     /**
@@ -126,8 +131,16 @@ export default class ToDoModel {
         }
         if (listIndex >= 0) {
             let listToLoad = this.toDoLists[listIndex];
+
+            this.toDoLists = this.toDoLists.filter(item => item !== listToLoad)
+            this.toDoLists.unshift(listToLoad)
+            // this.toDoLists = this.toDoLists.reverse();
+            // console.log(this.toDoLists);
+            this.view.refreshLists(this.toDoLists);
+
             this.currentList = listToLoad;
             this.view.viewList(this.currentList);
+            
         }
     }
 
@@ -177,4 +190,5 @@ export default class ToDoModel {
             this.tps.undoTransaction();
         }
     } 
+    
 }

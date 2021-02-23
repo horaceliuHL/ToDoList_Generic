@@ -4,18 +4,21 @@
     height:100%;
     display: grid;
     padding: 1px;
-    grid-template-rows: 5% 95%;
-    grid-template-columns: 12% 88%;
+    grid-template-rows: 6% 91.5%;
+    grid-template-columns: 12% 86.7%;
 }
 
 #navbar {
     grid-column: 1 / span 2;
     grid-row: 1 / span 1;
+    height: 80%;
+
 }
 
 #left-sidebar {
     grid-column: 1 / span 1;
     grid-row: 2 / span 1;
+    margin-top: 1px;
 }
 
 #left-sidebar-header {
@@ -36,14 +39,23 @@
     grid-row: 2 span 1;
     display: flex;
     flex-direction: column;
+    background-color: #40454e;
+    margin-top: 1px;
 }
 
 #todo-list-items-div{
+    height: 25%;
     display: flex;
     flex-direction: column;
 }
 
 .list-item-card {
+    height: 25%;
+    display: flex;
+    flex-direction: row;
+}
+
+.list-item-card1 {
     height: 5%;
     display: flex;
     flex-direction: row;
@@ -69,4 +81,77 @@
 
 .list-item-control {
     width: 20%;
+}
+
+
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #40454e;
+    color: white;
+    padding: 1rem 1.5rem;
+    width: 24rem;
+    height: 8rem;
+    border-radius: 0.17rem;
+}
+.modal-title {
+    font-family: 'Consolas';
+    font-weight: bold;
+    font-size: 19px;
+}
+.close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    
+    color: white;
+}
+.close-button:hover {
+    background-color: darkgray;
+}
+.cancel-button {
+    float: right;
+    cursor: pointer;
+    font-family: 'Consolas';
+    font-size: 16px;
+}
+.cancel-button:hover {
+    background-color: darkgray;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    
+    border-radius: 0.15rem;
+}
+.confirm-button {
+    float: left;
+    cursor: pointer;
+    font-family: 'Consolas';
+    font-size: 16px;
+}
+.confirm-button:hover {
+    background-color: darkgray;
+}
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }

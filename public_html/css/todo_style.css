@@ -13,7 +13,7 @@
     --swatch-text:          #e9edf0; /* USED IN MOUSE-OVER SELECTION OF TEXT AND BORDERS */ 
     --swatch-text-accent:   #ffc819; /* USED IN MOUSE-OVER SELECTION OF TEXT AND BORDERS */  
 
-    --font-primary:         'Lexend Exa', sans-serif;
+    --font-primary:         'Consolas', sans-serif;
 }
 
 #grid-container {
@@ -26,23 +26,28 @@
 }
 
 #navbar {
-    box-shadow: 2px 2px 2px var(--swatch-primary); 
+    box-shadow: 2px 3px 2px var(--swatch-primary); 
 }
 
 #left-sidebar {
     background-color: var(--swatch-complement);
     color: rgb(233,237,240);
+    box-shadow: 2px 3px 2px var(--swatch-primary);
 }
 
 #workspace {
     background-color: var(--swatch-primary);
     color: rgb(233,237,240);
+    box-shadow: 2px 3px 2px var(--swatch-primary);
 }
 
 #title-div {
     color: rgb(255,200,25);
     font-weight: bold;
-    font-size: 14pt;
+    font-size: 18pt;
+    font-family: 'Consolas';
+    margin-top: 3px;
+    margin-left: 5px;
 }
 
 #left-sidebar-header {
