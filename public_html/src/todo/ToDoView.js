@@ -98,19 +98,23 @@ export default class ToDoView {
         }
 
         for (let i = 0; i < list.items.length; i++){
+            let controller = this.controller;
             let listItem = list.items[i];
 
             let desc = document.getElementById("todo-description-" + listItem.id);
-            desc.onclick = function () { desc.contentEditable = true; }
+            let tempTask;
+            desc.onclick = function () { tempTask = desc.innerHTML; desc.contentEditable = true; }
             desc.onblur = function() { 
                 desc.contentEditable = false; 
-                list.items[i].setDescription(desc.textContent);
+                controller.handleChangeTask(tempTask, desc.textContent, i);
             }
 
             let date1 = document.getElementById("todo-date1-" + listItem.id);
             let date = document.getElementById("todo-date-" + listItem.id);
+            let oldDate;
             let storeDateTemp;
             date.onclick = function () {
+                oldDate = date.innerHTML;
                 date.style.display = 'none';
                 date1.style.display = '';
             }
@@ -121,13 +125,15 @@ export default class ToDoView {
                 date1.style.display = 'none';
                 date.innerHTML = storeDateTemp;
                 date.style.display = ''
-                list.items[i].setDueDate(storeDateTemp);
+                controller.handleChangeDate(oldDate, storeDateTemp, i)
             }
 
             let status1 = document.getElementById("todo-status1-" + listItem.id);
             let status = document.getElementById("todo-status-" + listItem.id);
+            let oldStatus;
             let storeStatusTemp;
             status.onclick = function() {
+                oldStatus = status.innerHTML;
                 status.style.display = 'none';
                 status1.value = status.textContent;
                 status1.style.display = '';
@@ -139,9 +145,24 @@ export default class ToDoView {
                 status1.style.display = 'none';
                 status.innerHTML = storeStatusTemp;
                 status.style.display = '';
-                list.items[i].setStatus(storeStatusTemp);
+                controller.handleStatusChange(oldStatus, storeStatusTemp, i);
+                // list.items[i].setStatus(storeStatusTemp);
             }
 
+            let moveUp = document.getElementById("todo-up-" + listItem.id);
+            moveUp.onclick = function () {
+                controller.handleMoveItemUp(listItem);
+            }
+
+            let moveDown = document.getElementById("todo-down-" + listItem.id);
+            moveDown.onclick = function () {
+                controller.handleMoveItemDown(listItem);
+            }
+
+            let deleteItem = document.getElementById("todo-close-" + listItem.id);
+            deleteItem.onclick = function () {
+                controller.handleDeleteItem(listItem);
+            }
 
             // let up = document.getElementById("todo-up-" + listItem.id);
             // up.onclick = function() {

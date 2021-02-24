@@ -4,6 +4,12 @@ import ToDoList from './ToDoList.js'
 import ToDoListItem from './ToDoListItem.js'
 import jsTPS from '../common/jsTPS.js'
 import AddNewItem_Transaction from './transactions/AddNewItem_Transaction.js'
+import ChangeTask_Transaction from './transactions/ChangeTask_Transaction.js'
+import ChangeDate_Transaction from './transactions/ChangeDate_Transaction.js'
+import ChangeStatus_Transaction from './transactions/ChangeStatus_Transaction.js';
+import MoveItemUp_Transaction from './transactions/MoveItemUp_Transaction.js';
+import MoveItemDown_Transaction from './transactions/MoveItemDown_Transaction.js';
+import DeleteItem_Transaction from './transactions/DeleteItem_Transaction.js';
 
 /**
  * ToDoModel
@@ -74,6 +80,88 @@ export default class ToDoModel {
     addNewItemTransaction() {
         let transaction = new AddNewItem_Transaction(this);
         this.tps.addTransaction(transaction);
+    }
+
+    changeTaskTransaction(oldText, newText, id) {
+        let transaction = new ChangeTask_Transaction(this, oldText, newText, id);
+        this.tps.addTransaction(transaction);
+    }
+
+    changeTask(text, id){
+        this.currentList.items[id].setDescription(text);
+        this.view.viewList(this.currentList);
+    }
+
+    changeDateTransaction(oldDate, newDate, id){
+        let transaction = new ChangeDate_Transaction(this, oldDate, newDate, id);
+        this.tps.addTransaction(transaction);
+    }
+
+    changeDate(date, id){
+        this.currentList.items[id].setDueDate(date);
+        this.view.viewList(this.currentList);
+    }
+
+    changeStatusTransaction(oldStatus, newStatus, id){
+        let transaction = new ChangeStatus_Transaction(this, oldStatus, newStatus, id);
+        this.tps.addTransaction(transaction);
+    }
+
+    changeStatus(status, id){
+        this.currentList.items[id].setStatus(status);
+        this.view.viewList(this.currentList);
+    }
+
+    moveItemUpTransaction(item){
+        let transaction = new MoveItemUp_Transaction(this, item);
+        this.tps.addTransaction(transaction);
+    }
+
+    moveItemUp(item){
+        let index = this.currentList.getIndexOfItem(item);
+        let tempItem = this.currentList.items[index];
+        this.currentList.items.splice(index, 1);
+        if (index === 0){
+            this.currentList.items.splice(0, 0, tempItem);
+        } else {
+            this.currentList.items.splice(index - 1, 0, tempItem);
+        }
+        this.view.viewList(this.currentList);
+    }
+
+    moveItemDownTransaction(item){
+        let transaction = new MoveItemDown_Transaction(this, item);
+        this.tps.addTransaction(transaction);
+    }
+
+    moveItemDown(item){
+        let index = this.currentList.getIndexOfItem(item);
+        let tempItem = this.currentList.items[index];
+        this.currentList.items.splice(index, 1);
+        if (index === this.currentList.items.length - 1){
+            this.currentList.items.splice(this.currentList.items.length, 0, tempItem);
+        } else {
+            this.currentList.items.splice(index + 1, 0, tempItem);
+        }
+        this.view.viewList(this.currentList);
+    }
+
+    deleteItemTransaction(item){
+        let transaction = new DeleteItem_Transaction(this, item);
+        this.tps.addTransaction(transaction);
+    }
+
+    deleteItem(item){
+        let index = this.currentList.getIndexOfItem(item);
+        this.currentList.items.splice(index, 1);
+        this.view.viewList(this.currentList);
+        return [item, index];
+    }
+
+    restoreItem(array){
+        this.currentList.items.splice(array[1], 0, array[0]);
+        // this.currentList = list;
+        this.view.viewList(this.currentList);
     }
 
     /**
