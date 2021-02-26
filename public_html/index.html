@@ -13,12 +13,12 @@
 
 <body style="overflow: hidden; background-color: #d9d6cc;">
     <div id="grid-container" >
-        <div id="navbar" class="grid-item">
+        <div id="navbar" class="grid-item-navbar">
             <div id="title-div">
                 Todo Tracker
             </div>
         </div>
-        <div id="left-sidebar" class="grid-item" style="overflow-y: auto;">
+        <div id="left-sidebar" class="grid-item">
             <div id="left-sidebar-header" class="grid-item">
                 <span class="left-sidebar-header-text">Todolists</span>
                 <span class="left-sidebar-controls" id="add-undo-redo-box">
@@ -27,9 +27,9 @@
                     <span id="redo-button" class="material-icons todo_button">redo</span>
                 </span>
             </div>
-            <div id="todo-lists-list" class="grid-item"></div>
+            <div id="todo-lists-list" class="grid-item-list"></div>
         </div>
-        <div id="workspace">
+        <div id="workspace" class="grid-item">
             <div id="todo-list-header-card" class="list-item-card1">
                 <div id="task-col-header" class="task-col todo_button">Task</div>
                 <div id="date-col-header" class="due-date-col todo_button">Due Date</div>
@@ -37,9 +37,9 @@
                 <div class="list-controls-col">
                     <div class="list-item-control"></div>
                     <div class="list-item-control"></div>
-                    <div id="add-item-button" class="list-item-control material-icons todo_button">add_box</span></div>
-                    <div id="delete-list-button" class="list-item-control material-icons todo_button">delete</span></div>
-                    <div id="close-list-button" class="list-item-control material-icons todo_button">close</span></div>
+                    <div id="add-item-button" class="list-item-control material-icons todo_button">add_box</div>
+                    <div id="delete-list-button" class="list-item-control material-icons todo_button">delete</div>
+                    <div id="close-list-button" class="list-item-control material-icons todo_button">close</div>
                 </div>
             </div>
             <div id="todo-list-items-div"></div>

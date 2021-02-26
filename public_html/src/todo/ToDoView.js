@@ -17,7 +17,7 @@ export default class ToDoView {
         let newListId = "todo-list-" + newList.id;
         let listElement = document.createElement("div");
         listElement.setAttribute("id", newListId);
-        listElement.setAttribute("class", "todo_button");
+        listElement.setAttribute("class", "todo_button_item");
         listElement.appendChild(document.createTextNode(newList.name));
         listsElement.appendChild(listElement);
 
@@ -41,7 +41,12 @@ export default class ToDoView {
                 // listElement.childNodes[0].innerHTML = listElement.textContent;
                 // console.log(listsElement)
             }
+            thisController.handleResetTransactions();
         })
+        listElement.onblur = function () {
+            listElement.style.contentEditable = false;
+            thisController.handleChangeListName(listElement.textContent, newList.id);
+        }
 
         
     }
@@ -79,7 +84,7 @@ export default class ToDoView {
         for (let i = 0; i < list.items.length; i++) {
             // NOW BUILD ALL THE LIST ITEMS
             let listItem = list.items[i];
-            let listItemElement = "<div id='todo-list-item-" + listItem.id + "' class='list-item-card'>"
+            let listItemElement = "<div id='todo-list-item-" + listItem.id + "' class='list-item-card' style='border-bottom: solid; height: 60%'>"
                                 + "<div id='todo-description-" + listItem.id + "' class='task-col'>" + listItem.description + "</div>"
                                 + "<div id='todo-date-" + listItem.id + "' class='due-date-col'>" + listItem.dueDate + "</div>"
                                 + "<input id='todo-date1-" + listItem.id + "' class='due-date-col' type='date' style='display:none'>"
@@ -134,6 +139,7 @@ export default class ToDoView {
             let storeStatusTemp;
             status.onclick = function() {
                 oldStatus = status.innerHTML;
+                storeStatusTemp = status.innerHTML;
                 status.style.display = 'none';
                 status1.value = status.textContent;
                 status1.style.display = '';
@@ -163,13 +169,6 @@ export default class ToDoView {
             deleteItem.onclick = function () {
                 controller.handleDeleteItem(listItem);
             }
-
-            // let up = document.getElementById("todo-up-" + listItem.id);
-            // up.onclick = function() {
-            //     list.items.splice(i, 1);
-            //     list.items.unshift(listItem);
-            //     this.viewList(list);
-            // }
 
         }
         

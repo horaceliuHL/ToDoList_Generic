@@ -164,6 +164,21 @@ export default class ToDoModel {
         this.view.viewList(this.currentList);
     }
 
+    resetTransactions(){
+        this.tps = new jsTPS();
+    }
+
+    changeListName(name, id){
+        let list;
+        for (let i = 0; i < this.toDoLists.length; i++){
+            if (this.toDoLists[i].id === id){
+                list = this.toDoLists[i];
+            }
+        }
+        list.setName(name);
+        this.view.refreshLists(this.toDoLists);
+    }
+
     /**
      * addNewList
      * 

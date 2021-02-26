@@ -56,6 +56,10 @@ export default class ToDoController {
         this.model.loadList(listId);
     }
 
+    handleChangeListName(name, id){
+        this.model.changeListName(name, id);
+    }
+
     handleChangeTask(oldText, newText, id){
         this.model.changeTaskTransaction(oldText, newText, id);
     }
@@ -78,5 +82,9 @@ export default class ToDoController {
 
     handleDeleteItem(item){
         this.model.deleteItemTransaction(item);
+    }
+
+    handleResetTransactions(){
+        this.model.resetTransactions();
     }
 }

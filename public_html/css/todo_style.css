@@ -25,6 +25,17 @@
     background-color: var(--swatch-primary);
 }
 
+.grid-item-navbar {
+    background-color: var(--swatch-primary);
+    
+}
+
+.grid-item-list {
+    background-color: var(--swatch-complement);
+    height: 92%;
+    overflow-y: auto;
+}
+
 #navbar {
     box-shadow: 2px 3px 2px var(--swatch-primary); 
 }
@@ -33,6 +44,8 @@
     background-color: var(--swatch-complement);
     color: rgb(233,237,240);
     box-shadow: 2px 3px 2px var(--swatch-primary);
+    display: grid;
+    grid-template-rows: 7.5% 100%;
 }
 
 #workspace {
@@ -44,14 +57,19 @@
 #title-div {
     color: rgb(255,200,25);
     font-weight: bold;
-    font-size: 18pt;
+    font-size: 20pt;
     font-family: 'Consolas';
     margin-top: 3px;
     margin-left: 5px;
 }
 
 #left-sidebar-header {
+    background-color: var(--swatch-complement);
     border-bottom: dotted;
+    margin-left: 3%;
+    margin-right: 3%;
+    display: grid;
+    grid-template-columns: 50% 50%;
 }
 
 #todo-list-table-header {
@@ -68,9 +86,38 @@
 
 .todo_button {
     cursor:pointer;
-    background-color: var(--swatch-complement);
+    background-color: var(--swatch-primary);
 }
 
 .todo_button:hover {
     background-color: var(--swatch-contrast);
+}
+
+.todo_button_item {
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    font-family: Consolas;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    cursor:pointer;
+    background-color: var(--swatch-complement);
+}
+
+.todo_button_item:hover {
+    background-color: var(--swatch-contrast);
+}
+
+#todo-list-header-card {
+    border-bottom: dotted;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 40% 70%;
+}
+
+#add-list-button {
+    margin-top: 23%;
 }
