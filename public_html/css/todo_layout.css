@@ -35,8 +35,9 @@
     font-size: 18px;
 }
 
-#left-sidebar-controls {
+.left-sidebar-controls {
     text-align: right;
+    margin-top: 23%;
 }
 
 #workspace {
@@ -46,19 +47,37 @@
     flex-direction: column;
     background-color: #40454e;
     margin-top: 1px;
-    overflow-y: auto;
+    /* overflow-y: auto; */
+    overflow-x: hidden;
 }
 
 #todo-list-items-div{
-    height: 20%;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .list-item-card {
     height: 25%;
     display: flex;
     flex-direction: row;
+}
+
+.list-item-card2 {
+    margin-left: 1%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    width: 97%;
+    border-bottom: 1px solid white;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+}
+
+.list-item-card2:hover {
+    background-color: #4d5059;
 }
 
 .list-item-card1 {
@@ -74,9 +93,12 @@
     font-family: Consolas;
     font-size: 19px;
     font-weight: bold;
-    background-color: #40454e;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+#task-col-header:hover {
+    background-color: #4d5059;
 }
 
 .due-date-col {
@@ -85,9 +107,12 @@
     font-family: Consolas;
     font-size: 19px;
     font-weight: bold;
-    background-color: #40454e;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+#date-col-header:hover {
+    background-color: #4d5059;
 }
 
 .status-col {
@@ -96,22 +121,63 @@
     font-family: Consolas;
     font-size: 19px;
     font-weight: bold;
-    background-color: #40454e;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#status-col-header:hover {
+    background-color: #4d5059;
+}
+
+.task-col1 {
+    width:100%;
+    font-family: Consolas;
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 50%;
+    
+}
+
+.due-date-col1 {
+    width:100%;
+    height: 50%;
+    font-family: Consolas;
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.status-col1 {
+    width:100%;
+    height: 50%;
+    font-family: Consolas;
+    font-size: 16px;
+    font-weight: bold;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
 .list-controls-col {
-    width:100%;
-    height: 200%;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
+    border-radius: 20;
 }
 
 .list-item-control {
     width: 100%;
     text-align: center;
     padding: 10px;
+    cursor: pointer;
+    border-radius: 10%;
+}
+
+.list-item-control:hover {
+    background-color: #c3c4c7;
 }
 
 

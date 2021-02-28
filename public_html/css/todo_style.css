@@ -80,9 +80,9 @@
     border-bottom: dotted;
 }
 
-.list-item-card {
+/* .list-item-card {
     border-bottom: solid;
-}
+} */
 
 .todo_button {
     cursor:pointer;
@@ -108,7 +108,7 @@
 }
 
 .todo_button_item:hover {
-    background-color: var(--swatch-contrast);
+    background-color: #c3c4c7;
 }
 
 #todo-list-header-card {
@@ -119,5 +119,57 @@
 }
 
 #add-list-button {
-    margin-top: 23%;
+    background-color: #353a44;
+    border-radius: 10%;
+}
+
+#add-list-button:hover {
+    background-color: #c3c4c7;
+}
+
+#undo-button {
+    background-color: #353a44;
+    border-radius: 10%;
+}
+
+#undo-button:hover {
+    background-color: #c3c4c7;
+}
+
+#redo-button {
+    background-color: #353a44;
+    border-radius: 10%;
+}
+
+#redo-button:hover {
+    background-color: #c3c4c7;
+}
+
+
+
+#add-item-button {
+    height: 100%;
+    border-radius: 10%;
+}
+
+#add-item-button:hover {
+    background-color: #c3c4c7;
+}
+
+#delete-list-button {
+    height: 100%;
+    border-radius: 10%;
+}
+
+#delete-list-button:hover {
+    background-color: #c3c4c7;
+}
+
+#close-list-button {
+    height: 100%;
+    border-radius: 10%;
+}
+
+#close-list-button:hover {
+    background-color: #c3c4c7;
 }

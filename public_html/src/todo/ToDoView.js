@@ -84,12 +84,12 @@ export default class ToDoView {
         for (let i = 0; i < list.items.length; i++) {
             // NOW BUILD ALL THE LIST ITEMS
             let listItem = list.items[i];
-            let listItemElement = "<div id='todo-list-item-" + listItem.id + "' class='list-item-card' style='border-bottom: solid; height: 60%'>"
-                                + "<div id='todo-description-" + listItem.id + "' class='task-col'>" + listItem.description + "</div>"
-                                + "<div id='todo-date-" + listItem.id + "' class='due-date-col'>" + listItem.dueDate + "</div>"
-                                + "<input id='todo-date1-" + listItem.id + "' class='due-date-col' type='date' style='display:none'>"
-                                + "<div id='todo-status-" + listItem.id + "' class='status-col'>" + listItem.status + "</div>"
-                                + "<select id='todo-status1-" + listItem.id + "' class='status-col' style='display:none'><option value='complete'>complete</option><option value='incomplete'>incomplete</option></select>"
+            let listItemElement = "<div id='todo-list-item-" + listItem.id + "' class='list-item-card2'>"
+                                + "<div id='todo-description-" + listItem.id + "' class='task-col1'>" + listItem.description + "</div>"
+                                + "<div id='todo-date-" + listItem.id + "' class='due-date-col1'>" + listItem.dueDate + "</div>"
+                                + "<input id='todo-date1-" + listItem.id + "' class='due-date-col1' type='date' style='display:none'>"
+                                + "<div id='todo-status-" + listItem.id + "' class='status-col1'>" + listItem.status + "</div>"
+                                + "<select id='todo-status1-" + listItem.id + "' class='status-col1' style='display:none'><option value='complete'>complete</option><option value='incomplete'>incomplete</option></select>"
                                 + "<div class='list-controls-col'>"
                                 + " <div id='todo-up-" + listItem.id + "' class='list-item-control material-icons'>keyboard_arrow_up</div>"
                                 + " <div id='todo-down-" + listItem.id + "' class='list-item-control material-icons'>keyboard_arrow_down</div>"
@@ -97,7 +97,8 @@ export default class ToDoView {
                                 + " <div class='list-item-control'></div>"
                                 + " <div class='list-item-control'></div>"
                                 + "</div>"
-                                + "</div>";
+                                + "</div>"
+                                + "<div style='border-bottom: thin'></div>";
                                 
             itemsListDiv.innerHTML += listItemElement;
         }
