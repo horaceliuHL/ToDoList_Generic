@@ -89,7 +89,7 @@ export default class ToDoView {
                                 + "<div id='todo-date-" + listItem.id + "' class='due-date-col1'>" + listItem.dueDate + "</div>"
                                 + "<input id='todo-date1-" + listItem.id + "' class='due-date-col1' type='date' style='display:none'>"
                                 + "<div id='todo-status-" + listItem.id + "' class='status-col1'>" + listItem.status + "</div>"
-                                + "<select id='todo-status1-" + listItem.id + "' class='status-col1' style='display:none'><option value='complete'>complete</option><option value='incomplete'>incomplete</option></select>"
+                                + "<select id='todo-status1-" + listItem.id + "' class='status-col2' style='display:none'><option value='complete'>complete</option><option value='incomplete'>incomplete</option></select>"
                                 + "<div class='list-controls-col'>"
                                 + " <div id='todo-up-" + listItem.id + "' class='list-item-control material-icons'>keyboard_arrow_up</div>"
                                 + " <div id='todo-down-" + listItem.id + "' class='list-item-control material-icons'>keyboard_arrow_down</div>"
@@ -99,8 +99,14 @@ export default class ToDoView {
                                 + "</div>"
                                 + "</div>"
                                 + "<div style='border-bottom: thin'></div>";
+            
                                 
             itemsListDiv.innerHTML += listItemElement;
+            if (listItem.status === 'complete'){
+                document.getElementById('todo-status-' + listItem.id).style.color = '#74a5c0';
+            } else {
+                document.getElementById('todo-status-' + listItem.id).style.color = '#f5bc75';
+            }
         }
 
         for (let i = 0; i < list.items.length; i++){

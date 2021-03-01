@@ -247,6 +247,12 @@ export default class ToDoModel {
         }
     }
 
+    closeList() {
+        this.currentList = null;
+        this.view.clearItemsList();
+        this.view.refreshLists(this.toDoLists);
+    }
+
     /**
      * Redo the current transaction if there is one.
      */

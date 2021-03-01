@@ -160,6 +160,16 @@
     padding-bottom: 10px;
 }
 
+.status-col2 {
+    width:100%;
+    height: 100%;
+    font-family: Consolas;
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 .list-controls-col {
     width: 100%;
     height: 100%;
@@ -192,24 +202,25 @@
     opacity: 0;
     visibility: hidden;
     transform: scale(1.1);
-    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+    transition: all .2s ease-in-out;
 }
 .modal-content {
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #40454e;
     color: white;
     padding: 1rem 1.5rem;
-    width: 24rem;
-    height: 8rem;
+    width: 31rem;
+    height: 10rem;
     border-radius: 0.17rem;
 }
 .modal-title {
     font-family: 'Consolas';
     font-weight: bold;
     font-size: 19px;
+    margin-top: 5%;
 }
 .close-button {
     float: right;
@@ -218,30 +229,44 @@
     text-align: center;
     cursor: pointer;
     border-radius: 0.25rem;
-    
+    margin-top: 4%;
+    margin-right: 4%;
+    padding: 1%;
     color: white;
 }
 .close-button:hover {
     background-color: darkgray;
+}
+.separator {
+    margin-top: -13%;
 }
 .cancel-button {
     float: right;
     cursor: pointer;
     font-family: 'Consolas';
     font-size: 16px;
+    margin-top: 7%;
+    margin-right: 3%;
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-radius: 5%;
 }
 .cancel-button:hover {
     background-color: darkgray;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    
-    border-radius: 0.15rem;
 }
 .confirm-button {
     float: left;
     cursor: pointer;
     font-family: 'Consolas';
     font-size: 16px;
+    margin-top: 7%;
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-radius: 5%;
 }
 .confirm-button:hover {
     background-color: darkgray;
@@ -250,5 +275,5 @@
     opacity: 1;
     visibility: visible;
     transform: scale(1.0);
-    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+    transition: all .2s ease-in-out;
 }
