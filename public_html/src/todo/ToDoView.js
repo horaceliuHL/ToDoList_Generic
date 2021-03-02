@@ -41,7 +41,6 @@ export default class ToDoView {
                 // listElement.childNodes[0].innerHTML = listElement.textContent;
                 // console.log(listsElement)
             }
-            thisController.handleResetTransactions();
         })
         listElement.onblur = function () {
             listElement.style.contentEditable = false;
@@ -75,6 +74,7 @@ export default class ToDoView {
 
     // LOADS THE list ARGUMENT'S ITEMS INTO THE VIEW
     viewList(list) {
+        document.getElementById("add-list-button").style.display = 'none';
         // WE'LL BE ADDING THE LIST ITEMS TO OUR WORKSPACE
         let itemsListDiv = document.getElementById("todo-list-items-div");
 
@@ -106,6 +106,18 @@ export default class ToDoView {
                 document.getElementById('todo-status-' + listItem.id).style.color = '#74a5c0';
             } else {
                 document.getElementById('todo-status-' + listItem.id).style.color = '#f5bc75';
+            }
+
+            if (i == 0){
+                document.getElementById('todo-up-' + listItem.id).innerHTML = '';
+                document.getElementById('todo-up-' + listItem.id).classList.remove('list-item-control');
+                document.getElementById('todo-up-' + listItem.id).classList.add('list-item-control-removed');
+            }
+
+            if (i == list.items.length - 1){
+                document.getElementById('todo-down-' + listItem.id).innerHTML = '';
+                document.getElementById('todo-down-' + listItem.id).classList.remove('list-item-control');
+                document.getElementById('todo-down-' + listItem.id).classList.add('list-item-control-removed');
             }
         }
 
@@ -185,4 +197,37 @@ export default class ToDoView {
     setController(initController) {
         this.controller = initController;
     }
+
+    showAddList(){
+        document.getElementById("add-list-button").style.display = '';
+    }
+
+    hideUndo(){
+        document.getElementById("undo-button").style.display = 'none';
+    }
+
+    showUndo(){
+        document.getElementById("undo-button").style.display = '';
+    }
+
+    hideRedo(){
+        document.getElementById("redo-button").style.display = 'none';
+    }
+
+    showRedo(){
+        document.getElementById("redo-button").style.display = '';
+    }
+
+    hideTopControls() {
+        document.getElementById('add-item-button').style.display = 'none';
+        document.getElementById('delete-list-button').style.display = 'none';
+        document.getElementById('close-list-button').style.display = 'none';
+    }
+
+    showTopControls() {
+        document.getElementById('add-item-button').style.display = '';
+        document.getElementById('delete-list-button').style.display = '';
+        document.getElementById('close-list-button').style.display = '';
+    }
+
 }

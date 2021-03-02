@@ -190,6 +190,19 @@
     background-color: #c3c4c7;
 }
 
+.list-item-control1 {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10%;
+}
+
+.list-item-control-removed {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+
 
 
 .modal {

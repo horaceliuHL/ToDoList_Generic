@@ -80,11 +80,31 @@ export default class ToDoModel {
     addNewItemTransaction() {
         let transaction = new AddNewItem_Transaction(this);
         this.tps.addTransaction(transaction);
+        if (this.tps.hasTransactionToRedo()){
+            this.view.showRedo();
+        } else {
+            this.view.hideRedo();
+        }
+        if (this.tps.hasTransactionToUndo()){
+            this.view.showUndo();
+        } else {
+            this.view.hideUndo();
+        }
     }
 
     changeTaskTransaction(oldText, newText, id) {
         let transaction = new ChangeTask_Transaction(this, oldText, newText, id);
         this.tps.addTransaction(transaction);
+        if (this.tps.hasTransactionToRedo()){
+            this.view.showRedo();
+        } else {
+            this.view.hideRedo();
+        }
+        if (this.tps.hasTransactionToUndo()){
+            this.view.showUndo();
+        } else {
+            this.view.hideUndo();
+        }
     }
 
     changeTask(text, id){
@@ -95,6 +115,16 @@ export default class ToDoModel {
     changeDateTransaction(oldDate, newDate, id){
         let transaction = new ChangeDate_Transaction(this, oldDate, newDate, id);
         this.tps.addTransaction(transaction);
+        if (this.tps.hasTransactionToRedo()){
+            this.view.showRedo();
+        } else {
+            this.view.hideRedo();
+        }
+        if (this.tps.hasTransactionToUndo()){
+            this.view.showUndo();
+        } else {
+            this.view.hideUndo();
+        }
     }
 
     changeDate(date, id){
@@ -105,6 +135,16 @@ export default class ToDoModel {
     changeStatusTransaction(oldStatus, newStatus, id){
         let transaction = new ChangeStatus_Transaction(this, oldStatus, newStatus, id);
         this.tps.addTransaction(transaction);
+        if (this.tps.hasTransactionToRedo()){
+            this.view.showRedo();
+        } else {
+            this.view.hideRedo();
+        }
+        if (this.tps.hasTransactionToUndo()){
+            this.view.showUndo();
+        } else {
+            this.view.hideUndo();
+        }
     }
 
     changeStatus(status, id){
@@ -115,6 +155,16 @@ export default class ToDoModel {
     moveItemUpTransaction(item){
         let transaction = new MoveItemUp_Transaction(this, item);
         this.tps.addTransaction(transaction);
+        if (this.tps.hasTransactionToRedo()){
+            this.view.showRedo();
+        } else {
+            this.view.hideRedo();
+        }
+        if (this.tps.hasTransactionToUndo()){
+            this.view.showUndo();
+        } else {
+            this.view.hideUndo();
+        }
     }
 
     moveItemUp(item){
@@ -132,6 +182,16 @@ export default class ToDoModel {
     moveItemDownTransaction(item){
         let transaction = new MoveItemDown_Transaction(this, item);
         this.tps.addTransaction(transaction);
+        if (this.tps.hasTransactionToRedo()){
+            this.view.showRedo();
+        } else {
+            this.view.hideRedo();
+        }
+        if (this.tps.hasTransactionToUndo()){
+            this.view.showUndo();
+        } else {
+            this.view.hideUndo();
+        }
     }
 
     moveItemDown(item){
@@ -149,6 +209,16 @@ export default class ToDoModel {
     deleteItemTransaction(item){
         let transaction = new DeleteItem_Transaction(this, item);
         this.tps.addTransaction(transaction);
+        if (this.tps.hasTransactionToRedo()){
+            this.view.showRedo();
+        } else {
+            this.view.hideRedo();
+        }
+        if (this.tps.hasTransactionToUndo()){
+            this.view.showUndo();
+        } else {
+            this.view.hideUndo();
+        }
     }
 
     deleteItem(item){
@@ -227,12 +297,16 @@ export default class ToDoModel {
      * Load the items for the listId list into the UI.
      */
     loadList(listId) {
+        this.resetTransactions();
         let listIndex = -1;
         for (let i = 0; (i < this.toDoLists.length) && (listIndex < 0); i++) {
             if (this.toDoLists[i].id === listId)
                 listIndex = i;
         }
         if (listIndex >= 0) {
+            this.view.showTopControls();
+            this.view.hideUndo();
+            this.view.hideRedo();
             let listToLoad = this.toDoLists[listIndex];
 
             this.toDoLists = this.toDoLists.filter(item => item !== listToLoad)
@@ -248,6 +322,11 @@ export default class ToDoModel {
     }
 
     closeList() {
+        this.resetTransactions();
+        this.view.hideUndo();
+        this.view.hideRedo();
+        this.view.hideTopControls();
+        this.view.showAddList();
         this.currentList = null;
         this.view.clearItemsList();
         this.view.refreshLists(this.toDoLists);
@@ -259,6 +338,16 @@ export default class ToDoModel {
     redo() {
         if (this.tps.hasTransactionToRedo()) {
             this.tps.doTransaction();
+        }
+        if (this.tps.hasTransactionToRedo()){
+            this.view.showRedo();
+        } else {
+            this.view.hideRedo();
+        }
+        if (this.tps.hasTransactionToUndo()){
+            this.view.showUndo();
+        } else {
+            this.view.hideUndo();
         }
     }   
 
@@ -274,6 +363,11 @@ export default class ToDoModel {
      * Finds and then removes the current list.
      */
     removeCurrentList() {
+        this.resetTransactions();
+        this.view.hideUndo();
+        this.view.hideRedo();
+        this.view.hideTopControls();
+        this.view.showAddList();
         let indexOfList = -1;
         for (let i = 0; (i < this.toDoLists.length) && (indexOfList < 0); i++) {
             if (this.toDoLists[i].id === this.currentList.id) {
@@ -297,6 +391,16 @@ export default class ToDoModel {
     undo() {
         if (this.tps.hasTransactionToUndo()) {
             this.tps.undoTransaction();
+        }
+        if (this.tps.hasTransactionToRedo()){
+            this.view.showRedo();
+        } else {
+            this.view.hideRedo();
+        }
+        if (this.tps.hasTransactionToUndo()){
+            this.view.showUndo();
+        } else {
+            this.view.hideUndo();
         }
     } 
     

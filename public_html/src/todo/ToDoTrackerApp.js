@@ -41,6 +41,13 @@ export class ToDoTrackerApp {
                         modelToUpdate.addNewItemToList(listToAdd, itemData.description, itemData.due_date, itemData.status);
                     }
                 }
+
+                document.getElementById('add-item-button').style.display = 'none';
+                document.getElementById('delete-list-button').style.display = 'none';
+                document.getElementById('close-list-button').style.display = 'none';
+                document.getElementById("undo-button").style.display = 'none';
+                document.getElementById("redo-button").style.display = 'none';
+
             }
         };
         xmlhttp.open("GET", testFile, true);
