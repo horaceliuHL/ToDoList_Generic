@@ -63,7 +63,7 @@ export default class ToDoList {
     getIndexOfItem(item) {
         for (let i = 0; i < this.items.length; i++) {
             let testItem = this.items[i];
-            if (testItem === item) {
+            if (testItem.id === item.id) {
                 return i;
             }
         }

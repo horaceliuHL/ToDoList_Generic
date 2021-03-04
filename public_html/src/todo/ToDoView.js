@@ -94,8 +94,8 @@ export default class ToDoView {
                                 + " <div id='todo-up-" + listItem.id + "' class='list-item-control material-icons'>keyboard_arrow_up</div>"
                                 + " <div id='todo-down-" + listItem.id + "' class='list-item-control material-icons'>keyboard_arrow_down</div>"
                                 + " <div id='todo-close-" + listItem.id + "' class='list-item-control material-icons'>close</div>"
-                                + " <div class='list-item-control'></div>"
-                                + " <div class='list-item-control'></div>"
+                                + " <div class='list-item-control1'></div>"
+                                + " <div class='list-item-control1'></div>"
                                 + "</div>"
                                 + "</div>"
                                 + "<div style='border-bottom: thin'></div>";
@@ -127,7 +127,7 @@ export default class ToDoView {
 
             let desc = document.getElementById("todo-description-" + listItem.id);
             let tempTask;
-            desc.onclick = function () { tempTask = desc.innerHTML; desc.contentEditable = true; }
+            desc.onclick = function () { tempTask = desc.innerHTML; desc.contentEditable = true}
             desc.onblur = function() { 
                 desc.contentEditable = false; 
                 controller.handleChangeTask(tempTask, desc.textContent, i);
@@ -141,12 +141,16 @@ export default class ToDoView {
                 oldDate = date.innerHTML;
                 date.style.display = 'none';
                 date1.style.display = '';
+                date1.focus();
             }
             date1.addEventListener('change', (e) => {
                 storeDateTemp = e.target.value;
             })
             date1.onblur = function(){
                 date1.style.display = 'none';
+                if (storeDateTemp === undefined){
+                    storeDateTemp = "No Date";
+                }
                 date.innerHTML = storeDateTemp;
                 date.style.display = ''
                 controller.handleChangeDate(oldDate, storeDateTemp, i)
@@ -162,6 +166,7 @@ export default class ToDoView {
                 status.style.display = 'none';
                 status1.value = status.textContent;
                 status1.style.display = '';
+                status1.focus();
             }
             status1.addEventListener('change', (e) => {
                 storeStatusTemp = e.target.value;

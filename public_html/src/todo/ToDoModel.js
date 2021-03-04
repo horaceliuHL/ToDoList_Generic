@@ -168,6 +168,7 @@ export default class ToDoModel {
     }
 
     moveItemUp(item){
+        // console.log(this.currentList.items);
         let index = this.currentList.getIndexOfItem(item);
         let tempItem = this.currentList.items[index];
         this.currentList.items.splice(index, 1);
@@ -338,6 +339,7 @@ export default class ToDoModel {
     redo() {
         if (this.tps.hasTransactionToRedo()) {
             this.tps.doTransaction();
+            
         }
         if (this.tps.hasTransactionToRedo()){
             this.view.showRedo();
@@ -356,6 +358,7 @@ export default class ToDoModel {
      */
     removeItem(itemToRemove) {
         this.currentList.removeItem(itemToRemove);
+        this.nextListItemId -= 1;
         this.view.viewList(this.currentList);
     }
 
@@ -391,6 +394,7 @@ export default class ToDoModel {
     undo() {
         if (this.tps.hasTransactionToUndo()) {
             this.tps.undoTransaction();
+            // console.log(this.currentList.items)
         }
         if (this.tps.hasTransactionToRedo()){
             this.view.showRedo();
